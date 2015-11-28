@@ -1,6 +1,8 @@
 
 # elm-speed-reader
 
+- Live demo: <https://www.danneu.com/elm-speed-reader/>
+
 A simple [spreeder.com][spreeder]-inspired app built with [Elm][elm-lang] to help
 me learn and understand Elm.
 
