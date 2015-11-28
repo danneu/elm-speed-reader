@@ -3,6 +3,8 @@
 
 - Live demo: <https://www.danneu.com/elm-speed-reader/>
 
+![screenshot](https://dl.dropboxusercontent.com/spa/quq37nq1583x0lf/u8g9-xuf.png)
+
 A simple [spreeder.com][spreeder]-inspired app built with [Elm][elm-lang] to help
 me learn and understand Elm.
 
