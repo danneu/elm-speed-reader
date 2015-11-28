@@ -24,6 +24,7 @@ type alias Model =
   , chunkSize : Int
   , chunkIdx : Int
   , wordIdx : Int
+  , text : String
   , candidateText : String
   }
 
@@ -43,6 +44,7 @@ init =
       , wpm = wpm
       , prevBeat = Nothing
       , isRunning = False
+      , text = text
       , chunks = Belt.chunkBy chunkSize ((Array.fromList << String.words) text)
       , chunkSize = chunkSize
       , chunkIdx = 0
@@ -84,10 +86,12 @@ update action model =
         newChunkSize' = clamp 1 10 newChunkSize
         newChunkIdx = model.wordIdx // newChunkSize'
         newInterval = wpmToInterval model.wpm newChunkSize'
+        newChunks = Belt.chunkBy newChunkSize' ((Array.fromList << String.words) model.text)
       in
         ( { model | interval = newInterval
                   , chunkSize = newChunkSize'
                   , chunkIdx = newChunkIdx
+                  , chunks = newChunks
           }
         , Effects.none
         )
@@ -113,6 +117,7 @@ update action model =
       in
       ( { model | isRunning = False
                 , chunks = newChunks
+                , text = model.candidateText
         }
       , Effects.none
       )
@@ -269,7 +274,7 @@ view address model =
     ]
     [ text "Save" ]
   , h3 [] [ text "State" ]
-  , p [] [ text (toString { model | chunks = [["<snip>"]], candidateText = "<snip>" }) ]
+  , p [] [ text (toString { model | chunks = [["<snip>"]], candidateText = "<snip>", text = "<snip>" }) ]
   , footer
     [ style [ "margin-top" => "100px"
             , "text-align" => "center"
