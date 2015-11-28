@@ -1,0 +1,56 @@
+<!doctype html>
+<head>
+  <link rel="stylesheet" href="public/vendor/bootstrap-3.3.5-dist/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="public/vendor/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css" >
+  <style>
+   body {
+     padding-top: 100px;
+   }
+.rotate {
+    display: inline-block;
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: rotate;
+    -moz-animation-duration: 2s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -o-animation-name: rotate;
+    -o-animation-duration: 2s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: linear;
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@-webkit-keyframes rotate {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes rotate {
+    from {-moz-transform: rotate(0deg);}
+    to {-moz-transform: rotate(360deg);}
+}
+
+@-o-keyframes rotate {
+    from {-moz-transform: rotate(0deg);}
+    to {-moz-transform: rotate(360deg);}
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script src="elm.js"></script>
+<script type="text/javascript">
+  //Elm.fullscreen(Elm.Main)
+  Elm.embed(Elm.Main, document.getElementById('root'))
+</script>
