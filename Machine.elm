@@ -270,6 +270,19 @@ view address model =
     [ text "Save" ]
   , h3 [] [ text "State" ]
   , p [] [ text (toString { model | chunks = [["<snip>"]], candidateText = "<snip>" }) ]
+  , footer
+    [ style [ "margin-top" => "100px"
+            , "text-align" => "center"
+            ]
+    ]
+    [ p
+      []
+      [ text "Source code at "
+      , a
+        [ href "https://github.com/danneu/elm-speed-reader" ]
+        [ text "danneu/elm-speed-reader" ]
+      ]
+    ]
   ]
 
 -- put it down here so it's not in the center of the code
