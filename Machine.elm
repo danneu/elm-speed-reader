@@ -71,7 +71,12 @@ update action model =
   case action of
     Toggle ->
       ( { model | isRunning = not model.isRunning }
-      , Effects.none
+        -- When unpausing, start beating again
+      , if model.isRunning then
+          -- was running, now paused
+          Effects.none
+        else -- was paused, now running
+          Effects.tick Beat
       )
     Reset ->
       ( { model | prevBeat = Nothing
@@ -136,10 +141,10 @@ update action model =
         )
     Beat now ->
       case (model.isRunning, model.prevBeat) of
-        -- When paused, always just schedule next Beat
+        -- When paused, stop beating
         (False, _) ->
           ( model
-          , Effects.tick Beat
+          , Effects.none
           )
         -- Wait a full tick at the very start
         (_, Nothing) ->
